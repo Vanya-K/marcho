@@ -1,6 +1,7 @@
 @import "vars";
 @import "fonts";
 @import "reset";
+@import "libs";
 @import "global";
 
 .header {
@@ -61,6 +62,87 @@
     color: #fff;
     background-color: $accent;
     border-radius: 50%;
+  }
+}
+
+.slider {
+  padding-top: 65px;
+  background-color: $bg;
+  background-image: url(../images/slider/slider-bg.png);
+  background-repeat: no-repeat;
+  background-position: center 70px;
+  background-size: cover;
+  &__container {
+    max-width: 1560px;
+  }
+  &__item {
+    display: flex !important;
+    justify-content: space-between;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 175px;
+  }
+  &__title {
+    max-width: 670px;
+    margin-bottom: 35px;
+    @extend %roboto-700;
+    font-size: 58px;
+    line-height: 1.17;
+    color: $title;
+  }
+  &__span {
+    display: block;
+  }
+  &__text {
+    max-width: 470px;
+    margin-bottom: 55px;
+  }
+  &__link {
+    @extend %btn;
+  }
+  .slick-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    display: flex;
+    justify-content: center;
+    transform: translateX(-50%);
+    li {
+      margin: 0 5px;
+      line-height: 0;
+      button {
+        position: relative;
+        width: 26px;
+        height: 26px;
+        padding: 0;
+        font-size: 0;
+        border: 1px solid transparent;
+        border-radius: 50%;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: $default;
+          transform: translate(-50%, -50%);
+        }
+      }
+      &.slick-active {
+        button {
+          border: 1px solid $accent;
+          &::before {
+            background-color: $accent;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -143,11 +225,7 @@
     }
   }
   &__form-btn {
-    padding: 12px 20px;
-    text-transform: uppercase;
-    background-color: $accent;
-    color: #fff;
-    box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    @extend %btn;
   }
 }
 
